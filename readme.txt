@@ -38,7 +38,12 @@ Next, clone the repo, then build and install:
 ```
 git clone https://github.com/scottdraves/flam3.git
 cd flam3
+# ./configure expects older versions of aclocal and automake so these symbolic links
+# are a workaround for that dependendy
+sudo ln -s $(which aclocal) /usr/local/bin/aclocal-1.15
+sudo ln -s $(which automake) /usr/local/bin/automake-1.15
 ./configure
+automake --add-missing --copy
 make
 sudo make install
 ```
@@ -56,12 +61,12 @@ sudo make install
 
 # Running from the Command linked
 
-The main executable is:
+Once built, the main executable is:
 ```
 electricsheep
 ```
 
-You can configure settings by running:
+You can also configure settings by running this (which is built with the main executable):
 ```
 electricsheep-preferences
 ```
